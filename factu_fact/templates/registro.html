@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Factu Fact - Crear Cuenta{% endblock %}
+{% block content %}
+    <h2>Crear Cuenta</h2>
+    <form action="{{ url_for('registro') }}" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label>Tipo de cuenta</label>
+        <div>
+            <input type="radio" id="cliente" name="tipo_cuenta" value="cliente" required>
+            <label for="cliente">Cliente</label>
+
+            <input type="radio" id="empresa" name="tipo_cuenta" value="empresa" required>
+            <label for="empresa">Empresa</label>
+        </div>
+
+        <div id="campo-nit" style="display:none;">
+            <label for="nit">NIT de la empresa:</label>
+            <input type="text" id="nit" name="nit">
+        </div>
+
+        <div id="campo-numero-identificacion" style="display:none;">
+            <label for="numero_identificacion">Número de identificación del cliente:</label>
+            <input type="text" id="numero_identificacion" name="numero_identificacion">
+        </div>
+
+        <button type="submit">Crear Cuenta</button>
+    </form>
+
+    <script>
+        const radios = document.querySelectorAll('input[name="tipo_cuenta"]');
+        const campoNIT = document.getElementById('campo-nit');
+        const nitInput = document.getElementById('nit');
+        const campoNumeroIdentificacion = document.getElementById('campo-numero-identificacion');
+        const numeroIdentificacionInput = document.getElementById('numero_identificacion');
+
+        radios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.value === 'empresa') {
+                    campoNIT.style.display = 'block';
+                    nitInput.required = true;
+                    campoNumeroIdentificacion.style.display = 'none';
+                    numeroIdentificacionInput.required = false;
+                } else {
+                    campoNumeroIdentificacion.style.display = 'block';
+                    numeroIdentificacionInput.required = true;
+                    campoNIT.style.display = 'none';
+                    nitInput.required = false;
+                }
+            });
+        });
+    </script>
+{% endblock %}

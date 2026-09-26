@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Factu Fact - Inicio{% endblock %}
+{% block content %}
+    <div class="acciones-landing">
+        <a href="{{ url_for('registro') }}" class="button">Crear Cuenta</a>
+        <a href="{{ url_for('login') }}" class="button">Iniciar Sesión</a>
+    </div>
+
+    <h2>¿Qué es Factu Fact?</h2>
+    <p>Factu Fact es una aplicación web de facturación fácil de usar, útil, rápida, eficiente, segura e intuitiva.</p>
+
+    <h2>Objetivo de Factu Fact</h2>
+    <p>El objetivo de Factu Fact es facilitar la facturación electrónica para toda Colombia, haciendo de ella un proceso fácil, rápido, seguro y eficiente.</p>
+
+    <h2>¿Por qué elegir Factu Fact?</h2>
+    <p>Factu Fact es la mejor opción para facturar en Colombia por su facilidad de uso, rapidez, seguridad, eficiencia e intuición.</p>
+
+    <h2>Sistema de pagos</h2>
+    <p>Factu Fact maneja un sistema de pagos que te permite pagar con tus tarjetas de crédito o débito de forma segura. Tenemos planes mensuales, trimestrales, semestrales y anuales para que puedas escoger según tus necesidades y conveniencia.</p>
+{% endblock %}

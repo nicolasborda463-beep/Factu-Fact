@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Factu Fact{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="contenedor-flex">
+        <img class="logo" src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo de Factu Fact">
+        <nav class="nav-links">
+            {% if usuario_actual %}
+                <a href="{{ url_for('dashboard') }}" class="button">Inicio</a>
+                <a href="{{ url_for('facturas_historial') }}" class="button">Facturas</a>
+                <a href="{{ url_for('gastos_historial') }}" class="button">Gastos</a>
+                <a href="{{ url_for('logout') }}" class="button">Cerrar Sesión</a>
+            {% else %}
+                <a href="{{ url_for('landing') }}" class="button">Inicio</a>
+                <a href="{{ url_for('registro') }}" class="button">Crear Cuenta</a>
+                <a href="{{ url_for('login') }}" class="button">Iniciar Sesión</a>
+            {% endif %}
+        </nav>
+    </div>
+
+    <header>
+        <h1>Factu Fact</h1>
+        <h2>La mejor forma de facturación de Colombia</h2>
+    </header>
+
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+        {% if mensajes %}
+            <ul class="flash-messages">
+                {% for categoria, mensaje in mensajes %}
+                    <li class="flash flash-{{ categoria }}">{{ mensaje }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Factu Fact. Todos los derechos reservados.</p>
+        <p>Telefonos: +57 3102610707 +57 320 5981164</p>
+        <p>Correos: info@factufact.com</p>
+    </footer>
+</body>
+</html>

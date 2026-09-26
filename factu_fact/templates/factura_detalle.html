@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Factu Fact - Factura {{ factura.numero_factura }}{% endblock %}
+{% block content %}
+    <h2>Factura {{ factura.numero_factura }}</h2>
+
+    <a href="{{ url_for('factura_pdf', factura_id=factura.id) }}" class="button">Descargar Factura</a><br>
+    <form action="{{ url_for('factura_eliminar', factura_id=factura.id) }}" method="post"
+          onsubmit="return confirm('¿Seguro que deseas eliminar esta factura?');">
+        <button type="submit">Eliminar Factura</button>
+    </form>
+
+    <h4>Fecha: <span>{{ factura.fecha }}</span></h4>
+    <h4>Hora: <span>{{ factura.hora }}</span></h4>
+    <h4>Número de Factura: <span>{{ factura.numero_factura }}</span></h4>
+    <h4>Empresa: <span>{{ factura.empresa }}</span></h4>
+    <h4>Nombre del Cliente: <span>{{ factura.nombre_cliente }}</span></h4>
+    <h4>Cédula: <span>{{ factura.cedula_cliente }}</span></h4>
+    <h4>Productos: <span>{{ factura.productos }}</span></h4>
+    <h4>Total: <span>{{ factura.total_formateado }}</span></h4>
+{% endblock %}

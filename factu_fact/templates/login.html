@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Factu Fact - Iniciar Sesión{% endblock %}
+{% block content %}
+    <h3>Iniciar sesión</h3>
+    <form action="{{ url_for('login') }}" method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Iniciar Sesión</button><br>
+        <a href="{{ url_for('recuperar_cuenta') }}" class="button">¿Olvidaste tu contraseña?</a>
+    </form>
+{% endblock %}

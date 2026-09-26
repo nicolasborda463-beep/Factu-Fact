@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Factu Fact - Recuperar Cuenta{% endblock %}
+{% block content %}
+    <h3>Recuperación de cuenta</h3>
+    <form action="{{ url_for('recuperar_cuenta') }}" method="post">
+        <label for="email">Correo de recuperación:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="submit">Siguiente</button>
+    </form>
+{% endblock %}

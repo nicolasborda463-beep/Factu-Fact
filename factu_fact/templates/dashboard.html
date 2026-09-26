@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Factu Fact - Panel Principal{% endblock %}
+{% block content %}
+    <h2>Bienvenido a Factu Fact, {{ usuario_actual.nombre }}</h2>
+    <p>La mejor web de facturas electrónicas en Colombia.</p>
+
+    <h3>Últimas Facturas</h3>
+    {% if facturas %}
+        <ul>
+            {% for factura in facturas %}
+                <li>
+                    {{ factura.numero_factura }} - {{ factura.nombre_cliente }} - {{ factura.total_formateado }}
+                    <a href="{{ url_for('factura_detalle', factura_id=factura.id) }}">Más información</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Todavía no tienes facturas registradas.</p>
+    {% endif %}
+    <a href="{{ url_for('facturas_historial') }}" class="button">Ver Historial de Facturas</a>
+    {% if usuario_actual.es_empresa %}
+        <a href="{{ url_for('factura_nueva') }}" class="button">Crear Nueva Factura</a>
+    {% endif %}
+
+    <h3>Total Facturado</h3>
+    <p>El total facturado es de ${{ "%.0f"|format(total_facturado) }}</p>
+    <a href="{{ url_for('gastos_historial') }}" class="button">Ver Historial de Gastos</a>
+{% endblock %}

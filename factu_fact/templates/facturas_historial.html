@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Factu Fact - Historial de Facturas{% endblock %}
+{% block content %}
+    <h3>Historial de Facturas</h3>
+
+    {% if usuario_actual.es_empresa %}
+        <a href="{{ url_for('factura_nueva') }}" class="button">Crear Nueva Factura</a>
+    {% endif %}
+
+    {% if facturas %}
+        <ul>
+            {% for factura in facturas %}
+                <li>
+                    {{ factura.numero_factura }} - {{ factura.fecha }} - {{ factura.nombre_cliente }} - {{ factura.total_formateado }}
+                    <a href="{{ url_for('factura_detalle', factura_id=factura.id) }}">Más información</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay facturas registradas todavía.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Factu Fact - Verificar Código{% endblock %}
+{% block content %}
+    <h3>Ingresa el código y tu nueva contraseña</h3>
+    <form action="{{ url_for('recuperar_cuenta_codigo') }}" method="post">
+        <label for="codigo">Código de verificación:</label>
+        <input type="text" id="codigo" name="codigo" maxlength="6" required>
+
+        <label for="nueva_password">Contraseña nueva:</label>
+        <input type="password" id="nueva_password" name="nueva_password" required>
+
+        <label for="repetir_password">Repite la contraseña nueva:</label>
+        <input type="password" id="repetir_password" name="repetir_password" required>
+
+        <button type="submit">Guardar contraseña nueva</button>
+    </form>
+{% endblock %}

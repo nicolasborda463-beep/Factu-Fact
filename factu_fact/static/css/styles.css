@@ -1,0 +1,191 @@
+:root {
+    --azul-primario: #1d9cd6;
+    --azul-oscuro: #0d6ea8;
+    --blanco: #ffffff;
+    --gris-claro: #f4f8fb;
+    --gris-borde: #d7e3ec;
+    --texto: #1a1a1a;
+    --error: #d93025;
+    --exito: #1e8e3e;
+    --radius: 12px;
+    --sombra: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--gris-claro);
+    color: var(--texto);
+}
+
+h1 {
+    font-size: 24px;
+    color: var(--azul-primario);
+    margin: 0;
+}
+
+h2 {
+    color: var(--azul-primario);
+    font-size: 20px;
+    margin: 16px 0 8px;
+}
+
+h3 {
+    color: var(--azul-oscuro);
+    font-size: 18px;
+    margin: 16px 0 8px;
+}
+
+h4 {
+    font-size: 15px;
+    margin: 8px 0;
+}
+
+p {
+    color: var(--texto);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+.contenedor-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 24px;
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+header {
+    text-align: center;
+    padding: 24px 16px;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 24px;
+    background: var(--blanco);
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #5f6368;
+    font-size: 13px;
+}
+
+/* Botones estilo "pill" */
+.button,
+button {
+    display: inline-block;
+    background: var(--azul-primario);
+    color: var(--blanco);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 6px 6px 6px 0;
+    transition: background 0.2s ease;
+}
+
+.button:hover,
+button:hover {
+    background: var(--azul-oscuro);
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 480px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+input,
+textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--gris-borde);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--azul-primario);
+}
+
+/* Listas de facturas / gastos como tarjetas */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: var(--gris-claro);
+    border: 1px solid var(--gris-borde);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Mensajes flash */
+.flash-messages {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.flash {
+    list-style: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.flash-success {
+    background: #e6f4ea;
+    color: var(--exito);
+    border: 1px solid #b7e1c3;
+}
+
+.flash-error {
+    background: #fce8e6;
+    color: var(--error);
+    border: 1px solid #f6b8b3;
+}

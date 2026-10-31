@@ -1,43 +1,61 @@
+/* ===== Factu Fact — estilos globales ===== */
 :root {
     --azul-primario: #1d9cd6;
     --azul-oscuro: #0d6ea8;
+    --azul-claro: #e8f5fc;
     --blanco: #ffffff;
     --gris-claro: #f4f8fb;
     --gris-borde: #d7e3ec;
-    --texto: #1a1a1a;
+    --gris-texto: #5f6368;
+    --texto: #1f2933;
     --error: #d93025;
     --exito: #1e8e3e;
     --radius: 12px;
-    --sombra: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --sombra: 0 2px 10px rgba(20, 60, 90, 0.08);
+    --sombra-fuerte: 0 6px 20px rgba(20, 60, 90, 0.14);
 }
 
 * {
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    background: var(--gris-claro);
-    color: var(--texto);
+html {
+    scroll-behavior: smooth;
 }
 
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    background: var(--gris-claro);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+/* ----- Tipografía ----- */
 h1 {
-    font-size: 24px;
-    color: var(--azul-primario);
+    font-size: 2.1rem;
+    letter-spacing: 0.5px;
     margin: 0;
 }
 
 h2 {
     color: var(--azul-primario);
-    font-size: 20px;
-    margin: 16px 0 8px;
+    font-size: 1.4rem;
+    margin: 1.4em 0 0.4em;
 }
 
 h3 {
     color: var(--azul-oscuro);
-    font-size: 18px;
-    margin: 16px 0 8px;
+    font-size: 1.15rem;
+    margin: 1.4em 0 0.5em;
+}
+
+main > h2:first-child,
+main > h3:first-child {
+    margin-top: 0;
 }
 
 h4 {
@@ -48,52 +66,107 @@ h4 {
 p {
     color: var(--texto);
     font-size: 16px;
-    line-height: 1.5;
+    margin: 0.4em 0 1em;
 }
 
+a {
+    color: var(--azul-oscuro);
+}
+
+/* ----- Barra superior ----- */
 .logo {
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
 }
 
 .contenedor-flex {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding: 12px 24px;
+    padding: 10px 24px;
     background: var(--blanco);
+    border-bottom: 3px solid var(--azul-primario);
     box-shadow: var(--sombra);
 }
 
 .nav-links {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
 }
 
+.nav-links .button {
+    margin: 0;
+    padding: 8px 16px;
+    background: transparent;
+    color: var(--azul-oscuro);
+}
+
+.nav-links .button:hover {
+    background: var(--azul-claro);
+    transform: none;
+}
+
+/* ----- Encabezado ----- */
 header {
     text-align: center;
-    padding: 24px 16px;
+    padding: 36px 16px 56px;
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-oscuro));
+    color: var(--blanco);
 }
 
+header h1 {
+    color: var(--blanco);
+}
+
+header h2 {
+    color: #dff3fc;
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin: 6px 0 0;
+}
+
+/* ----- Contenido principal ----- */
 main {
-    max-width: 800px;
-    margin: 0 auto 40px;
-    padding: 24px;
+    flex: 1;
+    width: calc(100% - 32px);
+    max-width: 820px;
+    margin: -32px auto 40px;
+    padding: 28px 32px;
     background: var(--blanco);
     border-radius: var(--radius);
-    box-shadow: var(--sombra);
+    box-shadow: var(--sombra-fuerte);
 }
 
+.acciones-landing {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+/* ----- Pie de página ----- */
 footer {
+    margin-top: auto;
     text-align: center;
-    padding: 20px;
-    color: #5f6368;
-    font-size: 13px;
+    padding: 22px 16px;
+    background: #123a52;
+    color: #cfe3ef;
+    font-size: 14px;
 }
 
-/* Botones estilo "pill" */
+footer p {
+    color: inherit;
+    font-size: inherit;
+    margin: 2px 0;
+}
+
+/* ----- Botones ----- */
 .button,
 button {
     display: inline-block;
@@ -103,19 +176,30 @@ button {
     padding: 10px 22px;
     border-radius: 999px;
     font-size: 14px;
+    font-family: inherit;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
     margin: 6px 6px 6px 0;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
 
 .button:hover,
 button:hover {
     background: var(--azul-oscuro);
+    transform: translateY(-1px);
+    box-shadow: var(--sombra);
 }
 
-/* Formularios */
+button.peligro {
+    background: var(--error);
+}
+
+button.peligro:hover {
+    background: #b3261e;
+}
+
+/* ----- Formularios ----- */
 form {
     display: flex;
     flex-direction: column;
@@ -131,27 +215,52 @@ label {
 
 input,
 textarea {
+    width: 100%;
     padding: 10px 12px;
     border: 1px solid var(--gris-borde);
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 15px;
     font-family: inherit;
+    background: #fbfdff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 input:focus,
 textarea:focus {
     outline: none;
     border-color: var(--azul-primario);
+    box-shadow: 0 0 0 3px rgba(29, 156, 214, 0.2);
 }
 
-/* Listas de facturas / gastos como tarjetas */
+input[type="radio"] {
+    width: auto;
+    margin: 0 4px 0 12px;
+}
+
+input[type="radio"]:first-child {
+    margin-left: 0;
+}
+
+input[type="radio"] + label {
+    display: inline;
+    font-weight: 400;
+    margin: 0;
+}
+
+form button[type="submit"] {
+    align-self: flex-start;
+    margin-top: 14px;
+}
+
+/* ----- Listas de facturas / gastos como tarjetas ----- */
 ul {
     list-style: none;
     padding: 0;
+    margin: 0 0 16px;
 }
 
 ul li {
-    background: var(--gris-claro);
+    background: #fbfdff;
     border: 1px solid var(--gris-borde);
     border-radius: var(--radius);
     padding: 12px 16px;
@@ -161,21 +270,84 @@ ul li {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px;
+    transition: border-color 0.2s ease, background 0.2s ease;
 }
 
-/* Mensajes flash */
+ul li:hover {
+    border-color: var(--azul-primario);
+    background: var(--azul-claro);
+}
+
+ul li a {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+ul li form {
+    display: inline;
+    max-width: none;
+}
+
+ul li button {
+    margin: 0;
+    padding: 6px 14px;
+    background: var(--error);
+}
+
+ul li button:hover {
+    background: #b3261e;
+}
+
+/* ----- Detalle de factura ----- */
+.detalle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+    margin-top: 20px;
+}
+
+.detalle h4 {
+    margin: 0;
+    padding: 12px 14px;
+    background: var(--gris-claro);
+    border-left: 4px solid var(--azul-primario);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--gris-texto);
+}
+
+.detalle h4 span {
+    display: block;
+    margin-top: 2px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--texto);
+    overflow-wrap: anywhere;
+}
+
+/* ----- Mensajes flash ----- */
 .flash-messages {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 24px;
+    width: calc(100% - 32px);
+    max-width: 820px;
+    margin: 16px auto 0;
+    padding: 0;
 }
 
-.flash {
-    list-style: none;
+.flash-messages .flash {
+    display: block;
     padding: 10px 16px;
     border-radius: 8px;
     margin-bottom: 10px;
     font-size: 14px;
+}
+
+.flash-messages .flash:hover {
+    background: inherit;
 }
 
 .flash-success {
@@ -188,4 +360,29 @@ ul li {
     background: #fce8e6;
     color: var(--error);
     border: 1px solid #f6b8b3;
+}
+
+/* ----- Celular ----- */
+@media (max-width: 600px) {
+    .contenedor-flex {
+        flex-direction: column;
+        padding: 10px 14px;
+        gap: 8px;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .detalle {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
 }

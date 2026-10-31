@@ -13,4 +13,13 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "DATABASE_URL", f"sqlite:///{os.path.join(BASE_DIR, 'instance', 'factu_fact.db')}"
     )
+
+    # Render entrega la URL de PostgreSQL como "postgres://" o "postgresql://".
+    # SQLAlchemy 2.1 usaria por defecto el driver "psycopg" (v3), que no esta
+    # instalado; forzamos "psycopg2", que si esta en requirements.txt.
+    for _prefijo in ("postgres://", "postgresql://"):
+        if SQLALCHEMY_DATABASE_URI.startswith(_prefijo):
+            SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://" + SQLALCHEMY_DATABASE_URI[len(_prefijo):]
+            break
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
